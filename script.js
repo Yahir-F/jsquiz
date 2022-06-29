@@ -1,12 +1,14 @@
 ///Create a Button that will start the quiz 
-//once Button Is clicked the button will dissapear 
+//once Button Is clicked the button will dissapear P.S I didn't make it dissapear but it works..
 //User Will be prompted with the quiz questions 
 //Timer on the top right of the screen indicating time left
 //questions have to = a set amount of points totaling 100.
 //if user gets questions wrong the don't receive points for the question + question is skipped.
 //Scores are to be stored and displayed for reference
 //will be using the let function in order to set values 
-let timeLeft = 76;
+
+//Will keep track of the time
+let timeLeft = 60;
 
 let numTime = document.getElementById("numTime");
 let divScore = document.getElementById("d-Scores");
@@ -17,6 +19,7 @@ quizStart.addEventListener("click", showTime);
 var divQuestion = document.getElementById("d-Question");
 let total = document.getElementById("total");
 var options = document.getElementById("Answers");
+//Will store High Score
 let highscore = [];
 
 
@@ -25,10 +28,10 @@ let storedArray = JSON.parse(window.localStorage.getItem("highScores"));
 
 var numquestions = 0;
 
+//Will keep track of Points
+let points = 100
 
-let points = 0
-
-
+//Function to make the timer show up.. I Struggled to get this working again..
 function showTime() {
   showQuestions();
   let timeInterval = setInterval(function() {
@@ -44,7 +47,7 @@ function showTime() {
 
 
 
-
+//Function to make the questions show up...
 function showQuestions() {
   ElsRemove(quizStart);
 
@@ -61,7 +64,7 @@ function showQuestions() {
 
         if (ment.innerText === questions[numquestions].answer) {
         } else {
-          points -= 10;
+          points -= 20;
       
         }
         divQuestion.innerHTML = "";
@@ -77,7 +80,7 @@ function showQuestions() {
   }
 }
 
-
+//function that will store the users final score and keep it in localstorage.
 function storeScore() {
   numTime.remove();
   options.textContent = "";
@@ -173,5 +176,5 @@ function buttonReturn() {
   buttonsDiv.append(backBtn)
 }
 
-
+//This will show all the final scores.
 viewScores();
