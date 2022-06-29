@@ -50,12 +50,31 @@ function showTime() {
 
         for(let i = 0; i <questions[numquestions].multiChoice.lenght; i++) {
             let ment = document.createElement("button");
-            ment.innerText = questions
-        }
-    }
+            ment.innerText = questions[numquestions].multiChoice[1];
+            ment.setAttribute("Data", i)
+            ment.addEventListener("click", function(event){
+                event.stopPropagation();
+            
+                if(ment.innerText === questions[numquestions].answer){
+                    score += timeleft
+                }else {
+        score -=25;
+    
+    
    }
 
-
+divQuestion.innerHTML = "";
+if(numquestions === questions.lenght){
+    return;
+}else {
+    numquestions++;
+    showQuestions();
+}
+});
+options.append(ment);
+        }
+    }
+}
 
 
 
