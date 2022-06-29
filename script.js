@@ -30,41 +30,38 @@ let storedArray = JSON.parse(window.localStorage.getItem("HighScores"));
 
 function showTime() {
     showQuestions();
-   let timeInterval = setInterval(function() {
-    timeLeft--;
-    numTime.textContent = "";
-    numTime.textContent - "Time: " + timeleft;
-    if (timeleft <= 0 || numquestions === questions.lenght){
+    let timeInterval = setInterval(function() {
+      timeLeft--;
+      numTime.textContent = "";
+      numTime.textContent = "Time: " + timeLeft;
+      if (timeLeft <= 0 || numquestions === questions.length) {
         clearInterval(timeInterval);
         storeScore();
-    }
+      } 
     }, 1000);
-   }
+  }
 
-   function showQuestions(){
-       ElsRemove(quizStart);
-
-    if(numquestions < questions.lenght){
-        divQuestion.innerHTML =  questions[numquestions].title;
-        options.textContent = ""
-
-        for(let i = 0; i <questions[numquestions].multiChoice.lenght; i++) {
-            let ment = document.createElement("button");
-            ment.innerText = questions[numquestions].multiChoice[1];
-            ment.setAttribute("Data", i)
-            ment.addEventListener("click", function(event){
-                event.stopPropagation();
-            
-                if(ment.innerText === questions[numquestions].answer){
-                    score += timeleft
-                }else {
-        score -=25;
-    
-    
-   }
-
+  function showQuestions() {
+    ElsRemove(quizStart);
+  
+    if (numquestions < questions.length) {
+      divQuestion.innerHTML = questions[numquestions].title;
+      options.textContent = "";
+  
+      for (let i = 0; i < questions[numquestions].multiChoice.length; i++) {
+        let ment = document.createElement("button");
+        ment.innerText = questions[numquestions].multiChoice[i];
+        ment.setAttribute("data-id", i);
+        ment.addEventListener("click", function (event) {
+          event.stopPropagation();
+  
+          if (ment.innerText === questions[numquestions].answer) {
+          } else {
+            points -= 15;
+        
+          }
 divQuestion.innerHTML = "";
-if(numquestions === questions.lenght){
+if(numquestions === questions.length){
     return;
 }else {
     numquestions++;
