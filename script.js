@@ -77,4 +77,35 @@ options.append(ment);
 }
 
 
+function storeScore() {
+    numTime.remove();
+    options.textContent = "";
 
+    let startingInput = document.createElement("input");
+    let endInput = document.createElement("input");
+  
+    total.innerHTML = `You scored ${score} points! Enter Initials (2 characters) `;
+    startingInput.setAttribute("type", "text");
+    endInput.setAttribute("type", "button");
+    endInput.setAttribute("value", "Submit my Score");
+    endInput.addEventListener("click", function (event) {
+      event.preventDefault();
+
+let Scores = scoresArray(storedArray, emptyArray);
+
+    let nameInitial = startingInput.value;
+    let userAndScore = {
+      nameInitial: nameInitial,
+      score: score,
+    };
+
+    Scores.push(userAndScore);
+    Save(Scores);
+    showAllScores();
+    removeScores();
+    buttonReturn();
+    viewScoresBtn.remove();
+  });
+  total.append(startingInput);
+  total.append(endInput);
+}
