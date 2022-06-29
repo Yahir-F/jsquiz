@@ -6,8 +6,11 @@
 //if user gets questions wrong the don't receive points for the question + question is skipped.
 //Scores are to be stored and displayed for reference
 //will be using the let function in order to set values 
-
-
+let buttonsDiv =  document.getElementById("buttons")
+let quizStart =  document.getElementById("Begin");
+quizStart.addEventListener("click", showTime)
+var divQuestion =  document.getElementById("d-Question")
+var options = document.getElementById("Answers")
 let total = document.getElementById("total")
 let divscore = document.getElementById("d-Scores")
 //will display time
@@ -20,13 +23,7 @@ var numquestions = 0;
 let timeleft = 76;
 //keeps track of points 
 let points = 0
-
-let quizStart =  document.getElementById("Begin");
-quizStart.addEventListener("click",showTime);
-
-
 let highscore = [];
-
 
 let storedArray = JSON.parse(window.localStorage.getItem("HighScores"));
 
@@ -48,7 +45,13 @@ function showTime() {
        ElsRemove(quizStart);
 
     if(numquestions < questions.lenght){
-        divQ
+        divQuestion.innerHTML =  questions[numquestions].title;
+        options.textContent = ""
+
+        for(let i = 0; i <questions[numquestions].multiChoice.lenght; i++) {
+            let ment = document.createElement("button");
+            ment.innerText = questions
+        }
     }
    }
 
